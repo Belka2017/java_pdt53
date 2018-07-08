@@ -66,4 +66,15 @@ public class ContactHelper extends HelperBase {
     public void aceptDelete() {
         wd.switchTo().alert().accept();
     }
+
+    public void createContact(ContactData contact) {
+        gotoAddNewContact();
+        fillNewContactForm(contact, true);
+        submitNewContact();
+        returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
 }
